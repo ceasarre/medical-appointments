@@ -15,9 +15,15 @@ class Handicapchoices(models.IntegerChoices):
     THIRD = 2, 'third'
     FOURTH = 3, 'fourth'
     FIFTH = 4, 'fifth'
+    
+class Gender(models.IntegerChoices):
+    MAN = 1, 'man'
+    WOMAN = 0, 'woman'
+
 class Person(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    gender = models.IntegerField(default=Gender.WOMAN, choices=Gender.choices)
     created_at =  models.DateTimeField(auto_now=True)
     date_of_appointment = models.DateTimeField()
     date_of_set_appointment = models.DateTimeField()

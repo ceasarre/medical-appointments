@@ -7,7 +7,7 @@ class PersonForm(ModelForm):
         fields = '__all__'
         # view in the form
         widgets = {
-        'handicap' : RadioSelect(),
+        'gender' : RadioSelect(),
         'date_of_appointment': SelectDateWidget(years=range(2020, 2040)),
         'date_of_set_appointment' : SelectDateWidget(years=range(2020, 2040))
         }
