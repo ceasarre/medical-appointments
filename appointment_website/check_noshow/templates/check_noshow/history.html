@@ -8,6 +8,7 @@
 <hr>
     {% for person in people %}
         <h3>Osoba dodana: {{person.created_at}}, wiek osoby: {{person.age}}</h3>
+        <p>id osoby: {{person.id}}</p>
         <hr>
     {% endfor %}
 {% endblock %}
