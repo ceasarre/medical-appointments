@@ -1,0 +1,15 @@
+{% extends "check_noshow/base.html" %}
+
+{% block title %}Formularz Pacjenta{% endblock %} 
+
+
+{% block content %}
+<h2>Wprowadź dane pacjenta</h2>
+<form method="post">
+    <table>
+        {{form}}
+    </table>
+    {% csrf_token %}
+    <button type="submit">Prześlij</button>
+</form>
+{% endblock %}
