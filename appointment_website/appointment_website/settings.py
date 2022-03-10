@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'check_noshow',
     'check_noshow.apps.CheckNoshowConfig',
     'django.contrib.admin',
     'django.contrib.auth',

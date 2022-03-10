@@ -1,0 +1,13 @@
+{% extends "check_noshow/base.html" %}
+
+{% block title %}History{% endblock %} 
+
+
+{% block content %}
+<h1>W bazie jest {{num_people}} zapisanych ludzi</h1>
+<hr>
+    {% for person in people %}
+        <h3>Osoba dodana: {{person.created_at}}, wiek osoby: {{person.age}}</h3>
+        <hr>
+    {% endfor %}
+{% endblock %}
