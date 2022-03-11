@@ -4,29 +4,10 @@
 
 
 {% block content %}
-<h1>Results</h1>
+<h1>Wynik predykcji</h1>
 <hr>
-<h3>RESSS</h3>
-{{person}}
-</br>
-{{timedelta}}
-Wiek osoby dodanej: {{person.age}}
+<h3>Sprawdzana osoba: <br>{{person}}</h3>
 <hr>
-róznica dni {{timedelta}}
-<!-- róznica dni{{timedelta}} -->
-dane wejściowe:
-{{person.gender}}
-{{person.age}}
-{{person.scolarship}}
-{{person.hipertension}}
-{{person.diabetes}}
-{{person.alcoholism}}
-{{person.sms_received}}
-{{person.num_app_missed}}
-{{person.handicap}}
-</br>
-<hr>
-data: {{data}}
-<hr>
-handicap: {{handicap}}
+
+<h3>Wynik predykcji dla tej osoby:<br> {{prediction}}</h3>
 {% endblock %}

@@ -5,6 +5,7 @@ from .models import Person
 from uuid import UUID
 import numpy as np
 import pandas as pd
+from .prepare_data import prepare_vec, predict
 
 from datetime import datetime
 def home(request):
@@ -30,49 +31,18 @@ def history(request):
                         "num_people": Person.objects.count()
                     })
 
-def map_to_int(x):
-    if x == True:
-        return 1 
-    else:
-        return 0
-
-def convert_handicap(x):
-    if int(x) == 0:
-        return np.array([1, 0, 0, 0, 0])
-    elif int(x) == 1:
-        return np.array([0, 1, 0, 0, 0])
-    elif int(x) == 2:
-        return np.array([0, 0, 1, 0, 0])
-    elif int(x) == 3:
-        return np.array([0, 0, 0, 1, 0])
-    else:
-        return np.array([0, 0, 0, 0, 1])
-    
-
 
 def results(request):
     
     person = Person.objects.latest('created_at')
-    time_delta = (person.date_of_appointment - person.date_of_set_appointment).days
-    data = []
-    data.append(int(person.gender))
-    data.append(int(person.age))
-    data.append(map_to_int(person.scolarship))
-    data.append(map_to_int(person.hipertension))
-    data.append(map_to_int(person.diabetes))
-    data.append(map_to_int(person.alcoholism))
-    data.append(map_to_int(person.sms_received))
-    data.append(int(person.num_app_missed))
-    handicap = convert_handicap(person.handicap)
-    # Add handicap to data - todo
-    data = np.array(data)
+    data = prepare_vec(person)
+    prediction = predict(data)
 
     args = {
             "cur_time": datetime.now(),
             "person" : person,
-            "timedelta" : time_delta,
             "data": data,
-            "handicap": handicap
+            "prediction": prediction
             }            
     
     return render(request, 'check_noshow/results.html', args)

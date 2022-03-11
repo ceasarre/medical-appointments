@@ -7,7 +7,7 @@
 <h1>W bazie jest {{num_people}} zapisanych ludzi</h1>
 <hr>
     {% for person in people %}
-        <h3>Osoba dodana: {{person.created_at}}, wiek osoby: {{person.age}}</h3>
+        <h3>Osoba dodana:<br> {{person.created_at}},<br>wiek osoby: {{person.age}} lat</h3>
         <p>id osoby: {{person.id}}</p>
         <hr>
     {% endfor %}

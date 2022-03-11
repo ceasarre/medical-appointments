@@ -34,7 +34,7 @@ class Person(models.Model):
     alcoholism = models.BooleanField()
     sms_received = models.BooleanField()
     handicap = models.IntegerField(default=Handicapchoices.FIRST, choices=Handicapchoices.choices)
-    num_app_missed = models.DecimalField(max_digits=3, decimal_places=0, validators=[MinValueValidator(Decimal('0.01'))])
+    num_app_missed = models.DecimalField(max_digits=3, decimal_places=0, validators=[MinValueValidator(Decimal('-0.01'))])
 
 
     def __str__(self) -> str:
