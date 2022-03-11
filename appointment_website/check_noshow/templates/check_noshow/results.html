@@ -1,0 +1,13 @@
+{% extends "check_noshow/base.html" %}
+
+{% block title %}Wyniki{% endblock %} 
+
+
+{% block content %}
+<h1>Results</h1>
+<hr>
+<h3>WIEK :{{person.age}}</h3>
+{{person.id}}
+{{person.num_app_missed}}
+{{person}}
+{% endblock %}
