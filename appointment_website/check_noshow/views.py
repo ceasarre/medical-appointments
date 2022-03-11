@@ -31,8 +31,10 @@ def history(request):
 def results(request):
     
     person = Person.objects.latest('created_at')
+    time_delta = (person.date_of_appointment - person.date_of_set_appointment).days
     args = {
             "cur_time": datetime.now(),
-            "person" : person
+            "person" : person,
+            "timedelta" : time_delta
             }
     return render(request, 'check_noshow/results.html', args)
