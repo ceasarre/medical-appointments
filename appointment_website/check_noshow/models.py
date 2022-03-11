@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from decimal import Decimal
 import uuid
 import datetime
-# import pretty
+from uuid import UUID
 
 def truncated_uuid4(uuid):
     return str(uuid)[:5]

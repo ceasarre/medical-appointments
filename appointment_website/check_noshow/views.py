@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import PersonForm
 from .models import Person
+from uuid import UUID
 
 from datetime import datetime
 def home(request):
@@ -14,7 +15,7 @@ def add_person(request):
         # save to database
         if form.is_valid():
             form.save()
-            return redirect("check-history")
+            return redirect("check-results")
     else:
         form = PersonForm()
     return render(request, 'check_noshow/person.html',
@@ -26,3 +27,12 @@ def history(request):
                         "people": Person.objects.all(),
                         "num_people": Person.objects.count()
                     })
+
+def results(request):
+    
+    person = Person.objects.latest('created_at')
+    args = {
+            "cur_time": datetime.now(),
+            "person" : person
+            }
+    return render(request, 'check_noshow/results.html', args)
